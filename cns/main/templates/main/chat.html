@@ -1,0 +1,40 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<div class="chat-container">
+    <!-- Left sidebar -->
+    <div class="chat-sidebar">
+        <input type="text" placeholder="Search..." class="chat-search">
+        <div class="chat-option active">Global Chat</div>
+        <!-- Future personal chats -->
+        <!-- <div class="chat-option">Alice</div> -->
+    </div>
+
+    <!-- Main chat area -->
+    <div class="chat-main">
+        <div class="chat-header">
+            <h3>Global Chat</h3>
+        </div>
+
+        <div class="chat-messages">
+            {% for p in posts %}
+            <div class="message {% if p.sender == request.session.username %}mine{% else %}other{% endif %}">
+                <strong>{{ p.sender }}</strong>: {{ p.text }}
+                <span class="timestamp">{{ p.timestamp }}</span>
+            </div>
+            {% endfor %}
+        </div>
+
+        <form method="POST" class="chat-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Send</button>
+        </form>
+    </div>
+</div>
+{% load static %}
+<script>
+    const globalChatUrl = "{% url 'global_chat' %}";
+</script>
+<script src="{% static 'main/scripts/scripts.js' %}"></script>
+{% endblock %}

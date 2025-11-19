@@ -1,0 +1,8 @@
+{% extends "main/base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<h1>Welcome{% if request.session.username %}, {{ request.session.username }}{% endif %}!</h1>
+<p>This is your home page. Navigate using the links above.</p>
+{% endblock %}
