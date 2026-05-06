@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-&i1bi_)(auhqajnw#o(sztdznk%f+^d93d822^_=4btt9731+x
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 GLOBAL_CHAT_KEY = "Hi4FqY7VtfP8bN0UZumXqJ3CBkSBQbI5BzA4saZPW4M="
 
